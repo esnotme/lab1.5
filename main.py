@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify # type: ignore
 import json
 
 app = Flask(__name__)
@@ -13,5 +13,9 @@ with open('data.json') as f:
 @app.route('/')
 def hello_world():
     return 'Hello, World!'  # return 'Hello World' in response
+
+@app.route('/students')
+def get_students():
+    return jsonify(data)# return student data in response
 
 app.run(host='0.0.0.0', port=8080, debug=True)
