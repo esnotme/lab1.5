@@ -30,5 +30,13 @@ def get_student(id):
   for student in data: 
     if student['id'] == id: # filter out the students without the specified id
       return jsonify(student)
+    
+@app.route('/stats/<pref>')
+def get_stats(pref):
+  count=0
+  for student in data: 
+    if student['pref'] == pref: #
+      count=count+1
+  print(pref+": "+count)
 
 app.run(host='0.0.0.0', port=8080, debug=True)
