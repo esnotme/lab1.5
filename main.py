@@ -30,5 +30,44 @@ def get_student(id):
   for student in data: 
     if student['id'] == id: # filter out the students without the specified id
       return jsonify(student)
-    
+
+@app.route('/stats')
+def get_stats():
+  
+    chicken_count = 0
+    fish_count = 0
+    vegetable_count = 0
+    comp_sp = 0
+    comp_m =0
+    IT_sp =0
+    IT_m =0
+    for student in data:
+      if student['pref'] == 'Chicken':
+        chicken_count += 1
+      elif student['pref'] == 'Fish':
+        fish_count += 1
+      elif student['pref'] == 'Vegetable':
+        vegetable_count += 1
+      if student['programme'] == 'Computer Science (Special)':
+        comp_sp +=1 
+      elif student['programme'] == 'Computer Science (Major)': 
+        comp_m +=1
+      elif student['programme'] == 'Information Technology (Special)': 
+        IT_sp +=1 
+      elif student['programme'] == 'Information Technology (Major)':
+        IT_m +=1
+
+    return jsonify({
+      'Chicken': chicken_count,
+      'Fish': fish_count,
+      'Vegetable': vegetable_count,
+      'Computer Science(Special)': comp_sp,
+      'Computer Science(Major)': comp_m,
+      'Information Technology(Special)': IT_sp,
+      'Information Technology(Major)': IT_m
+    })        
+
+
+
+
 app.run(host='0.0.0.0', port=8080, debug=True)
