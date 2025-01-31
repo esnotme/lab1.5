@@ -65,7 +65,25 @@ def get_stats():
       'Computer Science(Major)': comp_m,
       'Information Technology(Special)': IT_sp,
       'Information Technology(Major)': IT_m
-    })        
+    })   
+
+
+@app.route('/add/<int:a>/<int:b>')
+def add(a,b):
+  return str(a + b)
+
+@app.route('/subtract/<int:a>/<int:b>')
+def subract(a,b):
+  return str(a - b)
+
+@app.route('/multiply/<int:a>/<int:b>')
+def multiply(a,b):
+  return str(a * b)
+
+@app.route('/divide/<int:a>/<int:b>')
+def divide(a,b):
+  return str(a/b)
+
 
 
 
